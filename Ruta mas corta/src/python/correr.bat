@@ -1,1 +1,1 @@
-python ruta.py
+python ruta.py 8
