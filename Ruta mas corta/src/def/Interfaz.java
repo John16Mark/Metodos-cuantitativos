@@ -1,8 +1,6 @@
 package def;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class VariableTableExample extends JFrame {
+public class Interfaz extends JFrame {
     private JPanel contentPane;
     private JTextField textField, tfOrigen, tfDestino;
     private JButton generateButton;
@@ -29,9 +27,9 @@ public class VariableTableExample extends JFrame {
     Color celdaPar = new Color(215, 239, 244);
     Color celdaBloqueada = new Color(244, 244, 244);
     
-    public VariableTableExample() {
+    public Interfaz() {
         // Configuración básica de la ventana
-        setTitle("Variable Table Example");
+        setTitle("Ruta Más Corta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(width, height);
         contentPane = new JPanel();
@@ -232,6 +230,11 @@ public class VariableTableExample extends JFrame {
             Process process = processBuilder.start();
 
             String line;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             while ((line = errorReader.readLine()) != null) {
                 System.err.println(line);
