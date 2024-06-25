@@ -127,14 +127,10 @@ public class Interfaz extends JFrame {
                 data[i-1][0] = "Nodo " + (i);
             }
 
-            /*for (int i = 0; i < rows; i++)
-                data[i][0] = "Nodo " + (i + 1);*/
-
             // Crear un modelo de tabla personalizado
             DefaultTableModel model = new DefaultTableModel(data, columnNames) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
-                    // Deshabilitar la celda (1,1) - filas y columnas son 0-indexed
                     if (column == 0) {
                         return false;
                     }
@@ -148,15 +144,11 @@ public class Interfaz extends JFrame {
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                     Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                    /*Border border = BorderFactory.createLineBorder(Color.RED); // Borde negro interno
-                    ((JComponent) c).setBorder(border);*/
 
                     if(column == 0) {
                         c.setBackground(encabezado);
                         c.setForeground(Color.WHITE);
                         setHorizontalAlignment(JLabel.CENTER);
-                        /*border = BorderFactory.createLineBorder(encabezado); // Borde negro interno
-                        ((JComponent) c).setBorder(border);*/
                         return c;
                     }else {
                         c.setForeground(Color.BLACK);

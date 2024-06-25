@@ -1,3 +1,4 @@
+from time import sleep
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -70,10 +71,11 @@ print(resultado[0])
 ##########################################
 
 # Calcular las distancias utilizando Dijkstra
+sleep(0.1)
 distances = nx.single_source_dijkstra_path_length(G, origen)
 
 # Dibujar el grafo
-pos = nx.spring_layout(G)
+pos = nx.circular_layout(G)
 nx.draw(G, pos, with_labels=True, node_color='#68E0FF', node_size=700, font_size=10)
 labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
